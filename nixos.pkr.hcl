@@ -1,5 +1,5 @@
 locals {
-    iso_url = "https://channels.nixos.org/nixos-${var.version}/latest-nixos-minimal-${var.arch}-linux.iso"
+    iso_url = var.arch != "aarch64" ?  "https://channels.nixos.org/nixos-${var.version}/latest-nixos-minimal-${var.arch}-linux.iso" : var.aarch4_iso_local_url
     iso_checksum = var.iso_checksums[var.version][var.arch]
 }
 
@@ -9,9 +9,9 @@ variable "version" {
 }
 
 variable "arch" {
-  description = "The system architecture of NixOS to build (Default: x86_64)"
+  description = "The system architecture of NixOS to build (Default: aarch64)"
   type = string
-  default = "x86_64"
+  default = "aarch64"
 }
 
 variable "iso_checksums" {
@@ -20,8 +20,13 @@ variable "iso_checksums" {
     object({
       x86_64 = string
       i686 = string
+      aarch64 = string
     })
   )
+}
+
+variable "aarch4_iso_local_url" {
+  type    = string
 }
 
 variable "disk_size" {
