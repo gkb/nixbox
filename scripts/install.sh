@@ -3,22 +3,30 @@
 packer_http=$(cat .packer_http)
 
 # Partition disk
-cat <<FDISK | fdisk /dev/sda
-n
-
-
-
-
-a
-w
-
-FDISK
+# TODO: Change this to something more appropriate once I figure out the right commands to use.
+# TODO: Check out the disk size and make adjustments. I currently assume a disk size that's
+# multiples of 8GB.
+# TODO: Set the swap space size to be 2GB more than the memory size.
+cat <<PARTED | parted /dev/nvme0n1
+mklabel gpt
+mkpart primary 512MB -8GB
+mkpart primary linux-swap -8GB 100%
+mkpart ESP fat32 1MB 512MB
+set 3 esp on
+PARTED
 
 # Create filesystem
-mkfs.ext4 -j -L nixos /dev/sda1
+mkfs.ext4 -j -L nixos /dev/nvme0n1p1
+mkswap -L swap /dev/nvme0n1p2
+mkfs.fat -F 32 -n boot /dev/nvme0n1p3
 
 # Mount filesystem
 mount LABEL=nixos /mnt
+mkdir -p /mnt/boot
+mount /dev/disk/by-label/boot /mnt/boot
+
+# Set up the swap space
+swapon /dev/nvme0n1p2
 
 # Setup system
 nixos-generate-config --root /mnt
