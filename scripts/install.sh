@@ -3,14 +3,13 @@
 packer_http=$(cat .packer_http)
 
 # Partition disk
-# TODO: Change this to something more appropriate once I figure out the right commands to use.
-# TODO: Check out the disk size and make adjustments. I currently assume a disk size that's
-# multiples of 8GB.
-# TODO: Set the swap space size to be 2GB more than the memory size.
+# TODO: Set the size of the swap partition more systematically.
+# Use this Asana task: https://app.asana.com/0/1200363174425194/1202876013505099/f
+# I currently assume a hard drive of size greater than 2GB.
 cat <<PARTED | parted /dev/nvme0n1
 mklabel gpt
-mkpart primary 512MB -8GB
-mkpart primary linux-swap -8GB 100%
+mkpart primary 512MB -2GB
+mkpart primary linux-swap -2GB 100%
 mkpart ESP fat32 1MB 512MB
 set 3 esp on
 PARTED
