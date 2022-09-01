@@ -1,5 +1,5 @@
 { ... }:
 {
   # Enable guest additions.
-  virtualisation.vmware.guest.enable = true;
+  virtualisation.vmware.guest.enable = false;
 }
