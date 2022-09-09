@@ -1,7 +1,7 @@
 locals {
     iso_url = (var.arch != "aarch64" ?
-	"https://channels.nixos.org/nixos-${var.version}/latest-nixos-minimal-${var.arch}-linux.iso" :
-	var.aarch4_iso_local_url)
+        "https://channels.nixos.org/nixos-${var.version}/latest-nixos-minimal-${var.arch}-linux.iso" :
+        var.aarch4_iso_local_url)
     iso_checksum = var.iso_checksums[var.version][var.arch]
 }
 
@@ -162,8 +162,12 @@ build {
 
   post-processor "vagrant" {
     keep_input_artifact = false
-    only                = ["virtualbox-iso.virtualbox", "qemu.qemu", "hyperv-iso.hyperv",
-				"vmware-iso.vmware"]
+    only                = [
+        "virtualbox-iso.virtualbox",
+        "qemu.qemu",
+        "hyperv-iso.hyperv",
+        "vmware-iso.vmware"
+    ]
     output              = "nixos-${var.version}-{{.Provider}}-${var.arch}.box"
   }
 }
