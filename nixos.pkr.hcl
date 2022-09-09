@@ -160,7 +160,7 @@ build {
 
   post-processor "vagrant" {
     keep_input_artifact = false
-    only                = ["virtualbox-iso.virtualbox", "qemu.qemu", "hyperv-iso.hyperv"]
+    only                = ["virtualbox-iso.virtualbox", "qemu.qemu", "hyperv-iso.hyperv", "vmware-iso.vmware"]
     output              = "nixos-${var.version}-{{.Provider}}-${var.arch}.box"
   }
 }
