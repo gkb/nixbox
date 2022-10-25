@@ -33,7 +33,7 @@ variable "aarch4_iso_local_url" {
 
 variable "disk_size" {
   type    = string
-  default = "10240"
+  default = "100000"
 }
 
 variable "memory" {
