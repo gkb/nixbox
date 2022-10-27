@@ -31,6 +31,7 @@
   # Packages for Vagrant
   environment.systemPackages = with pkgs; [
     findutils
+    git
     gnumake
     iputils
     jq
@@ -38,6 +39,7 @@
     netcat
     nfs-utils
     rsync
+    vim
   ];
 
   users.users.root = { password = "vagrant"; };

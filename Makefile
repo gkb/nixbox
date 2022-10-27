@@ -1,4 +1,4 @@
-BUILDERS ?= "virtualbox-iso.virtualbox"
+BUILDERS ?= "vmware-iso.vmware"
 
 all: build
 
