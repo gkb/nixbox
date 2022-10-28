@@ -92,6 +92,8 @@ source "qemu" "qemu" {
   iso_url              = local.iso_url
   qemuargs             = [["-m", var.memory]]
   qemu_binary          = "qemu-system-aarch64"
+  accelerator          = "hvf"
+  machine_type         = "virt"
   shutdown_command     = "sudo shutdown -h now"
   ssh_port             = 22
   ssh_private_key_file = "./scripts/install_ed25519"
