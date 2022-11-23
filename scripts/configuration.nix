@@ -7,6 +7,7 @@
       ./hardware-builder.nix
       ./vagrant.nix
       ./custom-configuration.nix
+      ./vim-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader
@@ -38,8 +39,9 @@
     nettools
     netcat
     nfs-utils
+    neovim
     rsync
-    vim
+    vim_configurable
   ];
 
   users.users.root = { password = "vagrant"; };
