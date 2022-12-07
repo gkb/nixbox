@@ -7,6 +7,8 @@
       ./hardware-builder.nix
       ./vagrant.nix
       ./custom-configuration.nix
+      ./shell.nix
+      ./tmux-configuration.nix
       ./vim-configuration.nix
     ];
 
@@ -36,13 +38,19 @@
     gnumake
     iputils
     jq
+    man-pages
+    man-pages-posix
     nettools
     netcat
     nfs-utils
     neovim
     rsync
+    tmuxp
     vim_configurable
+    zsh-powerlevel10k
   ];
+
+  users.defaultUserShell = pkgs.zsh;
 
   users.users.root = { password = "vagrant"; };
   # Creates a "vagrant" group & user with password-less sudo access
