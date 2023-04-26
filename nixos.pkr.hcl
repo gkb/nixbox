@@ -116,8 +116,10 @@ source "vmware-iso" "vmware" {
     "sudo systemctl start sshd<enter>"
   ]
   boot_wait            = "45s"
+  version              = 19
+  disk_adapter_type    = "nvme"
   disk_size            = var.disk_size
-  guest_os_type        = "Linux"
+  guest_os_type        = (var.arch == "aarch64" ? "arm-other5xlinux-64" : "Linux")
   headless             = true
   http_directory       = "scripts"
   iso_checksum         = var.iso_checksum
@@ -127,6 +129,10 @@ source "vmware-iso" "vmware" {
   ssh_port             = 22
   ssh_private_key_file = "./scripts/install_ed25519"
   ssh_username         = "nixos"
+  usb                  = true
+  vmx_data             = {
+    "usb_xhci.present" = "true"
+  }
 }
 
 build {

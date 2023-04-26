@@ -17,6 +17,7 @@ build: version nixos.pkr.hcl ## [BUILDER] [ARCH] [VERSION] Build packer image
 	-var version=${VERSION} \
 	-var iso_checksum="$(shell curl -sL https://channels.nixos.org/nixos-${VERSION}/latest-nixos-minimal-${ARCH}-linux.iso.sha256 | grep -Eo '^[0-9a-z]{64}')" \
 	--only=${BUILDER} \
+  -on-error=ask \
 	nixos.pkr.hcl
 
 build-all: ## [BUILDER] [VERSION] Build packer image
