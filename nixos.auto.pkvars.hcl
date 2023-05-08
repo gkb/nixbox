@@ -16,8 +16,13 @@ iso_checksums = {
     i686 = "e48b3340df9812da7ea39d7f17079d88810c5b5e8d4251999f3cfa30346d8488"
     aarch64 = "md5:9cc2838cf2cd4af5028fdf9084352957"
   }
+  23.05 = {
+    x86_64 = "e61d1a292d5eda2cf85e25c7619b29afb3929332b871031e77a2a93a98ba8c9c"
+    i686 = "e48b3340df9812da7ea39d7f17079d88810c5b5e8d4251999f3cfa30346d8488"
+    aarch64 = "90c01fcd197b059ee7f364ff4ddf3afa74b08da5449acb50eb53140a7f77703c"
+  }
 }
 
-version = "22.05"
+version = "23.05"
 boot_wait = "2m"
-aarch4_iso_local_url = "/Users/gajubhat/Code_Pen/cache/nixos-minimal-21.05.4727.1a7c2f41c3b-aarch64-linux.iso"
+aarch4_iso_local_url = "/Users/gajubhat/Code_Pen/cache/nixos-minimal-23.05pre481958.51f728c0575-aarch64-linux.iso"
