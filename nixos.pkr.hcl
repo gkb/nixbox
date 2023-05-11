@@ -134,9 +134,11 @@ source "vmware-iso" "vmware" {
   version              = 19
   disk_adapter_type    = "nvme"
   disk_size            = var.disk_size
-  usb = true
-  vmx_data = {
-    "usb_xhci.present" = "true"
+  usb                  = true
+  vmx_data             = {
+    "usb_xhci.present"     = "true"
+    # This setting is critical for the virtual machine to work.
+    "ethernet0.virtualdev" = "vmxnet3"
   }
   guest_os_type        = "arm-other5xlinux-64"
   headless             = true
