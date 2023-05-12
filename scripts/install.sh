@@ -37,7 +37,6 @@ curl -sf "$packer_http/builders/$PACKER_BUILDER_TYPE.nix" > /mnt/etc/nixos/hardw
 curl -sf "$packer_http/configuration.nix" > /mnt/etc/nixos/configuration.nix
 curl -sf "$packer_http/custom-configuration.nix" > /mnt/etc/nixos/custom-configuration.nix
 curl -sf "$packer_http/shell.nix" > /mnt/etc/nixos/shell.nix
-curl -sf "$packer_http/tmux-configuration.nix" > /mnt/etc/nixos/tmux-configuration.nix
 
 ### Install ###
 nixos-install

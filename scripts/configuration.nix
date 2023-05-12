@@ -8,7 +8,6 @@
       ./vagrant.nix
       ./custom-configuration.nix
       ./shell.nix
-      ./tmux-configuration.nix
       ./vim-configuration.nix
     ];
 
